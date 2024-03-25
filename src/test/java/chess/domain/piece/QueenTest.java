@@ -20,9 +20,9 @@ class QueenTest {
         Position currentQueenPosition = Position.from(File.G, Rank.SEVEN);
         Map<Position, Piece> board = Map.of(
                 currentQueenPosition, queen,
-                Position.from(File.E, Rank.SEVEN), Pawn.ofWhite(),
-                Position.from(File.F, Rank.SIX), Pawn.ofWhite(),
-                Position.from(File.G, Rank.FIVE), Pawn.ofWhite()
+                Position.from(File.E, Rank.SEVEN), Pawn.WHITE_PAWN,
+                Position.from(File.F, Rank.SIX), Pawn.WHITE_PAWN,
+                Position.from(File.G, Rank.FIVE), Pawn.WHITE_PAWN
         );
 
         Set<Position> movablePositions = queen.calculateMovablePositions(currentQueenPosition, new Board(board));
@@ -44,9 +44,9 @@ class QueenTest {
         Position currentQueenPosition = Position.from(File.G, Rank.SEVEN);
         Map<Position, Piece> board = Map.of(
                 currentQueenPosition, queen,
-                Position.from(File.E, Rank.SEVEN), Pawn.ofBlack(),
-                Position.from(File.F, Rank.SIX), Pawn.ofBlack(),
-                Position.from(File.G, Rank.FIVE), Pawn.ofBlack()
+                Position.from(File.E, Rank.SEVEN), Pawn.BLACK_PAWN,
+                Position.from(File.F, Rank.SIX), Pawn.BLACK_PAWN,
+                Position.from(File.G, Rank.FIVE), Pawn.BLACK_PAWN
         );
 
         Set<Position> movablePositions = queen.calculateMovablePositions(currentQueenPosition, new Board(board));

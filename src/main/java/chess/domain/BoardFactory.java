@@ -33,8 +33,8 @@ public class BoardFactory {
     private static Map<Position, Pawn> createInitialPawns() {
         Map<Position, Pawn> pawns = new HashMap<>();
         for (File file : File.values()) {
-            pawns.put(Position.from(file, Rank.TWO), Pawn.ofWhite());
-            pawns.put(Position.from(file, Rank.SEVEN), Pawn.ofBlack());
+            pawns.put(Position.from(file, Rank.TWO), Pawn.WHITE_PAWN);
+            pawns.put(Position.from(file, Rank.SEVEN), Pawn.BLACK_PAWN);
         }
 
         return pawns;

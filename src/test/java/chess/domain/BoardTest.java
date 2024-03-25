@@ -36,14 +36,14 @@ class BoardTest {
         pieces.put(Position.from(File.F, Rank.ONE), Bishop.WHITE);
         pieces.put(Position.from(File.G, Rank.ONE), Knight.WHITE);
         pieces.put(Position.from(File.H, Rank.ONE), Rook.WHITE);
-        pieces.put(Position.from(File.A, Rank.TWO), Pawn.ofWhite());
-        pieces.put(Position.from(File.B, Rank.TWO), Pawn.ofWhite());
-        pieces.put(Position.from(File.C, Rank.TWO), Pawn.ofWhite());
-        pieces.put(Position.from(File.D, Rank.TWO), Pawn.ofWhite());
-        pieces.put(Position.from(File.E, Rank.TWO), Pawn.ofWhite());
-        pieces.put(Position.from(File.F, Rank.TWO), Pawn.ofWhite());
-        pieces.put(Position.from(File.G, Rank.TWO), Pawn.ofWhite());
-        pieces.put(Position.from(File.H, Rank.TWO), Pawn.ofWhite());
+        pieces.put(Position.from(File.A, Rank.TWO), Pawn.WHITE_PAWN);
+        pieces.put(Position.from(File.B, Rank.TWO), Pawn.WHITE_PAWN);
+        pieces.put(Position.from(File.C, Rank.TWO), Pawn.WHITE_PAWN);
+        pieces.put(Position.from(File.D, Rank.TWO), Pawn.WHITE_PAWN);
+        pieces.put(Position.from(File.E, Rank.TWO), Pawn.WHITE_PAWN);
+        pieces.put(Position.from(File.F, Rank.TWO), Pawn.WHITE_PAWN);
+        pieces.put(Position.from(File.G, Rank.TWO), Pawn.WHITE_PAWN);
+        pieces.put(Position.from(File.H, Rank.TWO), Pawn.WHITE_PAWN);
 
         pieces.put(Position.from(File.A, Rank.EIGHT), Rook.BLACK);
         pieces.put(Position.from(File.B, Rank.EIGHT), Knight.BLACK);
@@ -53,14 +53,14 @@ class BoardTest {
         pieces.put(Position.from(File.F, Rank.EIGHT), Bishop.BLACK);
         pieces.put(Position.from(File.G, Rank.EIGHT), Knight.BLACK);
         pieces.put(Position.from(File.H, Rank.EIGHT), Rook.BLACK);
-        pieces.put(Position.from(File.A, Rank.SEVEN), Pawn.ofBlack());
-        pieces.put(Position.from(File.B, Rank.SEVEN), Pawn.ofBlack());
-        pieces.put(Position.from(File.C, Rank.SEVEN), Pawn.ofBlack());
-        pieces.put(Position.from(File.D, Rank.SEVEN), Pawn.ofBlack());
-        pieces.put(Position.from(File.E, Rank.SEVEN), Pawn.ofBlack());
-        pieces.put(Position.from(File.F, Rank.SEVEN), Pawn.ofBlack());
-        pieces.put(Position.from(File.G, Rank.SEVEN), Pawn.ofBlack());
-        pieces.put(Position.from(File.H, Rank.SEVEN), Pawn.ofBlack());
+        pieces.put(Position.from(File.A, Rank.SEVEN), Pawn.BLACK_PAWN);
+        pieces.put(Position.from(File.B, Rank.SEVEN), Pawn.BLACK_PAWN);
+        pieces.put(Position.from(File.C, Rank.SEVEN), Pawn.BLACK_PAWN);
+        pieces.put(Position.from(File.D, Rank.SEVEN), Pawn.BLACK_PAWN);
+        pieces.put(Position.from(File.E, Rank.SEVEN), Pawn.BLACK_PAWN);
+        pieces.put(Position.from(File.F, Rank.SEVEN), Pawn.BLACK_PAWN);
+        pieces.put(Position.from(File.G, Rank.SEVEN), Pawn.BLACK_PAWN);
+        pieces.put(Position.from(File.H, Rank.SEVEN), Pawn.BLACK_PAWN);
 
         assertThat(board.getPieces()).isEqualTo(pieces);
     }

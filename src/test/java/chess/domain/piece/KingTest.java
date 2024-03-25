@@ -20,7 +20,7 @@ class KingTest {
         King king = King.WHITE;
         Position currentKingPosition = Position.from(File.E, Rank.ONE);
         Map<Position, Piece> board = Map.of(currentKingPosition, king,
-                Position.from(File.F, Rank.TWO), Pawn.ofWhite(),
+                Position.from(File.F, Rank.TWO), Pawn.WHITE_PAWN,
                 Position.from(File.D, Rank.ONE), Queen.WHITE);
 
         Set<Position> movablePositions = king.calculateMovablePositions(currentKingPosition, new Board(board));
@@ -36,9 +36,9 @@ class KingTest {
         King king = King.WHITE;
         Position currentKingPosition = Position.from(File.E, Rank.ONE);
         Map<Position, Piece> board = Map.of(currentKingPosition, king,
-                Position.from(File.F, Rank.TWO), Pawn.ofWhite(),
+                Position.from(File.F, Rank.TWO), Pawn.WHITE_PAWN,
                 Position.from(File.D, Rank.ONE), Queen.WHITE,
-                Position.from(File.D, Rank.TWO), Pawn.ofBlack());
+                Position.from(File.D, Rank.TWO), Pawn.BLACK_PAWN);
 
         Set<Position> movablePositions = king.calculateMovablePositions(currentKingPosition, new Board(board));
 
