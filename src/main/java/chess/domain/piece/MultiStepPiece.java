@@ -9,8 +9,8 @@ import java.util.Set;
 
 public abstract class MultiStepPiece extends Piece {
 
-    protected MultiStepPiece(Color color, PieceType pieceType, Set<Direction> directions) {
-        super(color, pieceType, directions);
+    protected MultiStepPiece(Color color, Set<Direction> directions) {
+        super(color, directions);
     }
 
     @Override

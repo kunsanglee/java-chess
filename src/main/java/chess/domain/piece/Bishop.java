@@ -8,6 +8,11 @@ public class Bishop extends MultiStepPiece {
     public static final Bishop BLACK = new Bishop(Color.BLACK);
 
     private Bishop(Color color) {
-        super(color, PieceType.BISHOP, Direction.DIAGONAL);
+        super(color, Direction.DIAGONAL);
+    }
+
+    @Override
+    public PieceType getPieceType() {
+        return PieceType.BISHOP;
     }
 }

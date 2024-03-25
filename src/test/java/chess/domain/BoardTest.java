@@ -4,11 +4,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import chess.domain.piece.Bishop;
-import chess.domain.piece.Empty;
 import chess.domain.piece.King;
 import chess.domain.piece.Knight;
 import chess.domain.piece.Pawn;
 import chess.domain.piece.Piece;
+import chess.domain.piece.PieceType;
 import chess.domain.piece.Queen;
 import chess.domain.piece.Rook;
 import chess.domain.position.File;
@@ -82,7 +82,7 @@ class BoardTest {
 
         Piece findPiece = board.findPieceByPosition(Position.from(File.A, Rank.THREE));
 
-        assertThat(findPiece).isEqualTo(new Empty());
+        assertThat(findPiece.getPieceType()).isEqualTo(PieceType.NONE);
     }
 
     @DisplayName("기물을 이동하는 경우 ")

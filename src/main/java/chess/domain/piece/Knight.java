@@ -8,6 +8,11 @@ public class Knight extends SingleStepPiece {
     public static final Knight BLACK = new Knight(Color.BLACK);
 
     private Knight(Color color) {
-        super(color, PieceType.KNIGHT, Direction.KNIGHT);
+        super(color, Direction.KNIGHT);
+    }
+
+    @Override
+    public PieceType getPieceType() {
+        return PieceType.KNIGHT;
     }
 }

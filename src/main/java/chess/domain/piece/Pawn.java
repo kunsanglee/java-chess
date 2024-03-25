@@ -14,7 +14,7 @@ public class Pawn extends Piece {
     public static final Pawn BLACK_PAWN = new Pawn(Color.BLACK, Direction.BLACK_PAWN);
 
     private Pawn(Color color, Set<Direction> directions) {
-        super(color, PieceType.PAWN, directions);
+        super(color, directions);
     }
 
     @Override
@@ -73,5 +73,10 @@ public class Pawn extends Piece {
     private boolean isStartingPosition(Direction direction, int currentRank) {
         return (DEFAULT_WHITE_RANK == currentRank && direction == Direction.NORTH) ||
                 (DEFAULT_BLACK_RANK == currentRank && direction == Direction.SOUTH);
+    }
+
+    @Override
+    public PieceType getPieceType() {
+        return PieceType.PAWN;
     }
 }
