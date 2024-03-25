@@ -2,6 +2,7 @@ package chess;
 
 import chess.domain.Board;
 import chess.domain.BoardFactory;
+import chess.domain.ChessGameResult;
 import chess.domain.command.CommandCondition;
 import chess.domain.command.CommandExecutor;
 import chess.domain.command.GameCommand;
@@ -29,16 +30,17 @@ public class ChessGame {
     }
 
     private void registerCommands() {
-        commands.put(GameCommand.MOVE, this::move);
         commands.put(GameCommand.START, args -> start());
+        commands.put(GameCommand.MOVE, this::move);
         commands.put(GameCommand.END, args -> end());
+        commands.put(GameCommand.STATUS, args -> status());
     }
 
     private void playChess() {
         OutputView.printGameStartMessage();
 
         while (gameState.isPlaying()) {
-            repeatUntilValidCommand(this::executeCommand);
+            repeatUntilValidCommand();
         }
     }
 
@@ -65,12 +67,17 @@ public class ChessGame {
         gameState = gameState.end();
     }
 
-    private static void repeatUntilValidCommand(Runnable runnable) {
+    private void status() {
+        ChessGameResult chessGameResult = board.calculateGameScore();
+        OutputView.printChessGameScore(chessGameResult);
+    }
+
+    private void repeatUntilValidCommand() {
         try {
-            runnable.run();
+            executeCommand();
         } catch (RuntimeException e) {
             OutputView.printErrorMessage(e.getMessage());
-            repeatUntilValidCommand(runnable);
+            repeatUntilValidCommand();
         }
     }
 }

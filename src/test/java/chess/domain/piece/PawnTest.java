@@ -3,6 +3,7 @@ package chess.domain.piece;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import chess.domain.Board;
+import chess.domain.ScoreCalculator;
 import chess.domain.position.File;
 import chess.domain.position.Position;
 import chess.domain.position.Rank;
@@ -20,7 +21,8 @@ class PawnTest {
         Position currentPosition = Position.from(File.H, Rank.THREE);
         Map<Position, Piece> board = Map.of(currentPosition, pawn);
 
-        Set<Position> movablePositions = pawn.calculateMovablePositions(currentPosition, new Board(board));
+        Set<Position> movablePositions = pawn.calculateMovablePositions(currentPosition,
+                new Board(board, new ScoreCalculator()));
 
         assertThat(movablePositions).isEqualTo(Set.of(Position.from(File.H, Rank.FOUR)));
     }
@@ -32,7 +34,8 @@ class PawnTest {
         Position currentPosition = Position.from(File.H, Rank.THREE);
         Map<Position, Piece> board = Map.of(currentPosition, pawn);
 
-        Set<Position> movablePositions = pawn.calculateMovablePositions(currentPosition, new Board(board));
+        Set<Position> movablePositions = pawn.calculateMovablePositions(currentPosition,
+                new Board(board, new ScoreCalculator()));
 
         assertThat(movablePositions).isEqualTo(Set.of(Position.from(File.H, Rank.TWO)));
     }
@@ -44,7 +47,8 @@ class PawnTest {
         Position currentPosition = Position.from(File.H, Rank.TWO);
         Map<Position, Piece> board = Map.of(currentPosition, pawn);
 
-        Set<Position> movablePositions = pawn.calculateMovablePositions(currentPosition, new Board(board));
+        Set<Position> movablePositions = pawn.calculateMovablePositions(currentPosition,
+                new Board(board, new ScoreCalculator()));
 
         assertThat(movablePositions).isEqualTo(
                 Set.of(Position.from(File.H, Rank.THREE), Position.from(File.H, Rank.FOUR)));
@@ -57,7 +61,8 @@ class PawnTest {
         Position currentPosition = Position.from(File.H, Rank.SEVEN);
         Map<Position, Piece> board = Map.of(currentPosition, pawn);
 
-        Set<Position> movablePositions = pawn.calculateMovablePositions(currentPosition, new Board(board));
+        Set<Position> movablePositions = pawn.calculateMovablePositions(currentPosition,
+                new Board(board, new ScoreCalculator()));
 
         assertThat(movablePositions).isEqualTo(
                 Set.of(Position.from(File.H, Rank.SIX), Position.from(File.H, Rank.FIVE)));
@@ -74,7 +79,8 @@ class PawnTest {
                 Position.from(File.G, Rank.THREE), Pawn.BLACK_PAWN
         );
 
-        Set<Position> movablePositions = pawn.calculateMovablePositions(currentPosition, new Board(board));
+        Set<Position> movablePositions = pawn.calculateMovablePositions(currentPosition,
+                new Board(board, new ScoreCalculator()));
 
         assertThat(movablePositions).isEqualTo(
                 Set.of(Position.from(File.G, Rank.THREE)));
@@ -91,7 +97,8 @@ class PawnTest {
                 Position.from(File.G, Rank.SIX), Pawn.WHITE_PAWN
         );
 
-        Set<Position> movablePositions = pawn.calculateMovablePositions(currentPosition, new Board(board));
+        Set<Position> movablePositions = pawn.calculateMovablePositions(currentPosition,
+                new Board(board, new ScoreCalculator()));
 
         assertThat(movablePositions).isEqualTo(
                 Set.of(Position.from(File.G, Rank.SIX)));
@@ -108,7 +115,8 @@ class PawnTest {
                 Position.from(File.G, Rank.THREE), Pawn.BLACK_PAWN
         );
 
-        Set<Position> movablePositions = pawn.calculateMovablePositions(currentPosition, new Board(board));
+        Set<Position> movablePositions = pawn.calculateMovablePositions(currentPosition,
+                new Board(board, new ScoreCalculator()));
 
         assertThat(movablePositions).isEqualTo(Set.of(Position.from(File.H, Rank.THREE),
                 Position.from(File.H, Rank.FOUR), Position.from(File.G, Rank.THREE))
@@ -125,7 +133,8 @@ class PawnTest {
                 Position.from(File.G, Rank.SIX), Pawn.WHITE_PAWN
         );
 
-        Set<Position> movablePositions = pawn.calculateMovablePositions(currentPosition, new Board(board));
+        Set<Position> movablePositions = pawn.calculateMovablePositions(currentPosition,
+                new Board(board, new ScoreCalculator()));
 
         assertThat(movablePositions).isEqualTo(Set.of(Position.from(File.H, Rank.SIX),
                 Position.from(File.H, Rank.FIVE), Position.from(File.G, Rank.SIX))

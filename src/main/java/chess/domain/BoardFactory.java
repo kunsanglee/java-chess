@@ -27,7 +27,7 @@ public class BoardFactory {
         pieces.putAll(createInitialKings());
         pieces.putAll(createInitialQueens());
 
-        return new Board(pieces);
+        return new Board(pieces, new ScoreCalculator());
     }
 
     private static Map<Position, Pawn> createInitialPawns() {

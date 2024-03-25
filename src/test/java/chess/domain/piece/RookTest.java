@@ -3,6 +3,7 @@ package chess.domain.piece;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import chess.domain.Board;
+import chess.domain.ScoreCalculator;
 import chess.domain.position.File;
 import chess.domain.position.Position;
 import chess.domain.position.Rank;
@@ -24,7 +25,8 @@ class RookTest {
                 Position.from(File.E, Rank.ONE), Knight.WHITE
         );
 
-        Set<Position> movablePositions = rook.calculateMovablePositions(currentRookPosition, new Board(board));
+        Set<Position> movablePositions = rook.calculateMovablePositions(currentRookPosition,
+                new Board(board, new ScoreCalculator()));
 
         assertThat(movablePositions).isEqualTo(
                 Set.of(Position.from(File.A, Rank.TWO), Position.from(File.A, Rank.THREE),
@@ -43,7 +45,8 @@ class RookTest {
                 Position.from(File.H, Rank.FIVE), Knight.BLACK
         );
 
-        Set<Position> movablePositions = rook.calculateMovablePositions(currentRookPosition, new Board(board));
+        Set<Position> movablePositions = rook.calculateMovablePositions(currentRookPosition,
+                new Board(board, new ScoreCalculator()));
 
         assertThat(movablePositions).isEqualTo(
                 Set.of(Position.from(File.G, Rank.EIGHT), Position.from(File.H, Rank.FIVE),

@@ -3,14 +3,17 @@ package chess.domain;
 import chess.domain.piece.Empty;
 import chess.domain.piece.Piece;
 import chess.domain.position.Position;
+import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
 
 public class Board {
     private final Map<Position, Piece> pieces;
+    private final ScoreCalculator scoreCalculator;
 
-    public Board(Map<Position, Piece> pieces) {
+    public Board(Map<Position, Piece> pieces, ScoreCalculator scoreCalculator) {
         this.pieces = pieces;
+        this.scoreCalculator = scoreCalculator;
     }
 
     public Piece findPieceByPosition(Position position) {
@@ -20,13 +23,17 @@ public class Board {
     public void move(Position sourcePosition, Position targetPosition, Color color) {
         Piece sourcePiece = findPieceByPosition(sourcePosition);
 
+        validate(sourcePosition, targetPosition, color, sourcePiece);
+
+        pieces.put(targetPosition, sourcePiece);
+        pieces.remove(sourcePosition);
+    }
+
+    private void validate(Position sourcePosition, Position targetPosition, Color color, Piece sourcePiece) {
         validatePositionIsSame(sourcePosition, targetPosition);
         validateSourceIsEmpty(sourcePiece);
         validateIsNotMyTurn(color, sourcePiece);
         validateIsMovablePosition(sourcePosition, targetPosition, sourcePiece);
-
-        pieces.put(targetPosition, sourcePiece);
-        pieces.remove(sourcePosition);
     }
 
     private void validatePositionIsSame(Position sourcePosition, Position targetPosition) {
@@ -54,7 +61,11 @@ public class Board {
         }
     }
 
+    public ChessGameResult calculateGameScore() {
+        return scoreCalculator.calculate(pieces);
+    }
+
     public Map<Position, Piece> getPieces() {
-        return pieces;
+        return Collections.unmodifiableMap(pieces);
     }
 }

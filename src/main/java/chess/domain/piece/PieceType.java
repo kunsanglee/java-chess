@@ -15,6 +15,10 @@ public enum PieceType {
         this.score = score;
     }
 
+    public boolean isPawn() {
+        return this == PAWN;
+    }
+
     public double getScore() {
         return score;
     }

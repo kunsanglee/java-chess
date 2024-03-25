@@ -146,7 +146,7 @@ class BoardTest {
             pieces.put(knightSourcePosition, Knight.WHITE);
             pieces.put(knightTargetPosition, Rook.BLACK);
 
-            Board board = new Board(pieces);
+            Board board = new Board(pieces, new ScoreCalculator());
 
             board.move(knightSourcePosition, knightTargetPosition, Color.WHITE);
 

@@ -12,4 +12,9 @@ public class BlackState extends MoveState {
 
         return new WhiteState();
     }
+
+    @Override
+    public GameState status() {
+        return new BlackState();
+    }
 }
