@@ -8,6 +8,8 @@ import java.util.Map;
 import java.util.Set;
 
 public class Board {
+    private static final int DEFAULT_KINGS_COUNT = 2;
+
     private final Map<Position, Piece> pieces;
     private final ScoreCalculator scoreCalculator;
 
@@ -63,6 +65,17 @@ public class Board {
 
     public ChessGameResult calculateGameScore() {
         return scoreCalculator.calculate(pieces);
+    }
+
+    public boolean isKingDead() {
+        return calculateKingsCount() != DEFAULT_KINGS_COUNT;
+    }
+
+    private long calculateKingsCount() {
+        return pieces.values().stream()
+                .filter(Piece::isKing)
+                .mapToInt(piece -> 1)
+                .count();
     }
 
     public Map<Position, Piece> getPieces() {

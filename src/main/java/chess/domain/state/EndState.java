@@ -4,6 +4,8 @@ import chess.domain.Board;
 import chess.domain.position.Position;
 
 public class EndState implements GameState {
+    EndState() {
+    }
 
     @Override
     public GameState start() {

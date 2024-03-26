@@ -33,6 +33,8 @@ public abstract class Piece {
         return color.isSame(other);
     }
 
+    public abstract boolean isKing();
+
     public abstract PieceType getPieceType();
 
     public Color getColor() {

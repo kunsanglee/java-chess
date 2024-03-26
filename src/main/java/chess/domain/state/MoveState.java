@@ -12,7 +12,7 @@ public abstract class MoveState implements GameState {
 
     @Override
     public GameState end() {
-        return new EndState();
+        return END_STATE;
     }
 
     @Override

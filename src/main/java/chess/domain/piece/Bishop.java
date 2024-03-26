@@ -12,6 +12,11 @@ public class Bishop extends MultiStepPiece {
     }
 
     @Override
+    public boolean isKing() {
+        return false;
+    }
+
+    @Override
     public PieceType getPieceType() {
         return PieceType.BISHOP;
     }

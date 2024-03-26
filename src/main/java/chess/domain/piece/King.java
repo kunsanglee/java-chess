@@ -12,6 +12,11 @@ public class King extends SingleStepPiece {
     }
 
     @Override
+    public boolean isKing() {
+        return true;
+    }
+
+    @Override
     public PieceType getPieceType() {
         return PieceType.KING;
     }

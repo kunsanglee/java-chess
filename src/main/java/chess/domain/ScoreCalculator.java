@@ -7,7 +7,6 @@ import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 public class ScoreCalculator {
-
     private static final double VERTICAL_PAWN_SCORE = 0.5;
     private static final int VERTICAL_PAWN_COUNT = 2;
 

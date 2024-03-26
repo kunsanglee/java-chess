@@ -1,5 +1,7 @@
 package chess;
 
+import static chess.domain.state.GameState.READY_STATE;
+
 import chess.domain.Board;
 import chess.domain.BoardFactory;
 import chess.domain.ChessGameResult;
@@ -8,7 +10,6 @@ import chess.domain.command.CommandExecutor;
 import chess.domain.command.GameCommand;
 import chess.domain.position.Position;
 import chess.domain.state.GameState;
-import chess.domain.state.ReadyState;
 import chess.view.InputView;
 import chess.view.OutputView;
 import java.util.EnumMap;
@@ -18,7 +19,7 @@ import java.util.Map;
 public class ChessGame {
     private final Map<GameCommand, CommandExecutor> commands = new EnumMap<>(GameCommand.class);
     private final Board board = BoardFactory.createInitialBoard();
-    private GameState gameState = new ReadyState();
+    private GameState gameState = READY_STATE;
 
     public void run() {
         try {

@@ -13,6 +13,11 @@ public class Queen extends MultiStepPiece {
     }
 
     @Override
+    public boolean isKing() {
+        return false;
+    }
+
+    @Override
     public PieceType getPieceType() {
         return PieceType.QUEEN;
     }

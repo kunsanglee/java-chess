@@ -33,7 +33,7 @@ public class Position {
         throw new IllegalArgumentException("move source위치 target위치가 잘못됐습니다. - 예. move b2 b3");
     }
 
-    public static Position from(File file, Rank rank) {
+    public static Position of(File file, Rank rank) {
         return from(toKey(file, rank));
     }
 

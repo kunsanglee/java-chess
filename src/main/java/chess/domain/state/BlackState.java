@@ -5,16 +5,22 @@ import chess.domain.Color;
 import chess.domain.position.Position;
 
 public class BlackState extends MoveState {
+    BlackState() {
+    }
 
     @Override
     public GameState move(Board board, Position source, Position target) {
         board.move(source, target, Color.BLACK);
+        
+        if (board.isKingDead()) {
+            return END_STATE;
+        }
 
-        return new WhiteState();
+        return WHITE_STATE;
     }
 
     @Override
     public GameState status() {
-        return new BlackState();
+        return BLACK_STATE;
     }
 }

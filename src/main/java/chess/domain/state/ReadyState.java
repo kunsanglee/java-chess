@@ -4,10 +4,12 @@ import chess.domain.Board;
 import chess.domain.position.Position;
 
 public class ReadyState implements GameState {
+    ReadyState() {
+    }
 
     @Override
     public GameState start() {
-        return new WhiteState();
+        return WHITE_STATE;
     }
 
     @Override
@@ -17,7 +19,7 @@ public class ReadyState implements GameState {
 
     @Override
     public GameState end() {
-        return new EndState();
+        return END_STATE;
     }
 
     @Override
