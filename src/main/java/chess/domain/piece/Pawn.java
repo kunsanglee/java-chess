@@ -10,17 +10,17 @@ import java.util.Set;
 public class Pawn extends Piece {
     private static final int DEFAULT_WHITE_RANK = 2;
     private static final int DEFAULT_BLACK_RANK = 7;
-    public static final Pawn WHITE_PAWN = new Pawn(Color.WHITE, Direction.WHITE_PAWN);
-    public static final Pawn BLACK_PAWN = new Pawn(Color.BLACK, Direction.BLACK_PAWN);
+    public static final Pawn WHITE_PAWN = new Pawn(Color.WHITE);
+    public static final Pawn BLACK_PAWN = new Pawn(Color.BLACK);
 
-    private Pawn(Color color, Set<Direction> directions) {
-        super(color, directions);
+    private Pawn(Color color) {
+        super(color);
     }
 
     @Override
     public Set<Position> calculateMovablePositions(Position currentPosition, Board board) {
         Set<Position> movablePositions = new HashSet<>();
-        directions.forEach(direction -> {
+        getDirections().forEach(direction -> {
             if (!currentPosition.canMoveNext(direction)) {
                 return;
             }
@@ -83,5 +83,13 @@ public class Pawn extends Piece {
     @Override
     public PieceType getPieceType() {
         return PieceType.PAWN;
+    }
+
+    @Override
+    public Set<Direction> getDirections() {
+        if (isWhite()) {
+            return Direction.WHITE_PAWN;
+        }
+        return Direction.BLACK_PAWN;
     }
 }

@@ -2,13 +2,14 @@ package chess.domain.piece;
 
 import chess.domain.Color;
 import chess.domain.Direction;
+import java.util.Set;
 
 public class King extends SingleStepPiece {
     public static final King WHITE = new King(Color.WHITE);
     public static final King BLACK = new King(Color.BLACK);
 
     private King(Color color) {
-        super(color, Direction.ALL);
+        super(color);
     }
 
     @Override
@@ -19,5 +20,10 @@ public class King extends SingleStepPiece {
     @Override
     public PieceType getPieceType() {
         return PieceType.KING;
+    }
+
+    @Override
+    public Set<Direction> getDirections() {
+        return Direction.ALL;
     }
 }

@@ -2,6 +2,7 @@ package chess.domain.piece;
 
 import chess.domain.Board;
 import chess.domain.Color;
+import chess.domain.Direction;
 import chess.domain.position.Position;
 import java.util.Collections;
 import java.util.Set;
@@ -9,7 +10,7 @@ import java.util.Set;
 public class Empty extends Piece {
 
     public Empty() {
-        super(Color.NONE, Collections.emptySet());
+        super(Color.NONE);
     }
 
     @Override
@@ -25,5 +26,10 @@ public class Empty extends Piece {
     @Override
     public PieceType getPieceType() {
         return PieceType.NONE;
+    }
+
+    @Override
+    public Set<Direction> getDirections() {
+        return Collections.emptySet();
     }
 }

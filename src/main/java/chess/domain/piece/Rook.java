@@ -2,13 +2,14 @@ package chess.domain.piece;
 
 import chess.domain.Color;
 import chess.domain.Direction;
+import java.util.Set;
 
 public class Rook extends MultiStepPiece {
     public static final Rook WHITE = new Rook(Color.WHITE);
     public static final Rook BLACK = new Rook(Color.BLACK);
 
     private Rook(Color color) {
-        super(color, Direction.STRAIGHT);
+        super(color);
     }
 
     @Override
@@ -19,5 +20,10 @@ public class Rook extends MultiStepPiece {
     @Override
     public PieceType getPieceType() {
         return PieceType.ROOK;
+    }
+
+    @Override
+    public Set<Direction> getDirections() {
+        return Direction.STRAIGHT;
     }
 }
