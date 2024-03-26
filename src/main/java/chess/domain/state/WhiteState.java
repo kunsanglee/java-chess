@@ -5,6 +5,7 @@ import chess.domain.Color;
 import chess.domain.position.Position;
 
 public class WhiteState extends MoveState {
+
     WhiteState() {
     }
 
@@ -21,6 +22,6 @@ public class WhiteState extends MoveState {
 
     @Override
     public GameState status() {
-        return WHITE_STATE;
+        return this;
     }
 }

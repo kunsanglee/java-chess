@@ -69,6 +69,7 @@ public class ChessGame {
     }
 
     private void status() {
+        gameState.status();
         ChessGameResult chessGameResult = board.calculateGameScore();
         OutputView.printChessGameScore(chessGameResult);
     }
