@@ -63,6 +63,8 @@ public class Board {
         }
     }
 
+//    public void load()
+
     public ChessGameResult calculateGameScore() {
         return scoreCalculator.calculate(pieces);
     }
