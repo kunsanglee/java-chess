@@ -34,6 +34,10 @@ public class ChessGame {
         return board.isKingDead();
     }
 
+    public void moveForHistory(Position source, Position target) {
+        gameState = gameState.move(board, source, target);
+    }
+
     public List<Move> end() {
         gameState = gameState.end();
         return Collections.unmodifiableList(moveHistory);

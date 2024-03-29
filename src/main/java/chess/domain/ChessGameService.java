@@ -21,6 +21,10 @@ public class ChessGameService {
     }
 
     public Long save(GameStatus gameStatus) {
+        if (getRecentPlayableGame().isPresent()) {
+            return getRecentPlayableGame().get().id();
+        }
+
         ChessGameRequest chessGameRequest = ChessGameRequest.from(gameStatus);
         return chessGameDao.save(chessGameRequest);
     }

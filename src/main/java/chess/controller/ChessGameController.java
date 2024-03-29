@@ -63,7 +63,7 @@ public class ChessGameController {
 
     private void loadRecentGameIfPresent() {
         List<Move> moves = chessGameService.getRecentPlayableGameMoves();
-        moves.forEach(move -> chessGame.move(move.source(), move.target()));
+        moves.forEach(move -> chessGame.moveForHistory(move.source(), move.target()));
     }
 
     private void move(CommandCondition commandCondition) {
