@@ -5,6 +5,7 @@ import chess.dao.MoveDao;
 import chess.dto.ChessGameRequest;
 import chess.dto.ChessGameResponse;
 import chess.dto.Move;
+import chess.dto.MoveRequest;
 import chess.dto.MoveResponse;
 import java.util.Collections;
 import java.util.List;
@@ -19,9 +20,9 @@ public class ChessGameService {
         this.moveDao = moveDao;
     }
 
-    public void save(GameStatus gameStatus) {
+    public Long save(GameStatus gameStatus) {
         ChessGameRequest chessGameRequest = ChessGameRequest.from(gameStatus);
-        chessGameDao.save(chessGameRequest);
+        return chessGameDao.save(chessGameRequest);
     }
 
     public List<Move> getRecentPlayableGameMoves() {
@@ -39,5 +40,14 @@ public class ChessGameService {
         return moveDao.findAll(chessGameId).stream()
                 .map(MoveResponse::from)
                 .toList();
+    }
+
+    public void saveMoveHistory(List<Move> moveHistory, Long chessGameId) {
+        moveHistory.forEach(move -> moveDao.save(
+                new MoveRequest(move.source().getValue(), move.target().getValue(), chessGameId)));
+    }
+
+    public void updateGameFinished() {
+        chessGameDao.updateGameFinished();
     }
 }

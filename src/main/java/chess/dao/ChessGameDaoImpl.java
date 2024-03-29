@@ -11,14 +11,23 @@ import java.util.Optional;
 
 public class ChessGameDaoImpl implements ChessGameDao {
 
+
     @Override
-    public void save(ChessGameRequest chessGameRequest) {
+    public Long save(ChessGameRequest chessGameRequest) {
         String query = "INSERT INTO chess_game (game_status) VALUES (?)";
 
         try (Connection connection = DBConnectionUtil.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+             PreparedStatement preparedStatement = connection.prepareStatement(query,
+                     PreparedStatement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1, chessGameRequest.gameStatus());
             preparedStatement.executeUpdate();
+
+            ResultSet resultSet = preparedStatement.getGeneratedKeys();
+            if (resultSet.next()) {
+                return resultSet.getLong(1);
+            }
+
+            return -1L;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -42,5 +51,19 @@ public class ChessGameDaoImpl implements ChessGameDao {
             throw new RuntimeException(e);
         }
         return Optional.empty();
+    }
+
+    @Override
+    public void updateGameFinished() {
+        String query = "UPDATE chess_game SET game_status = ?";
+
+        try (Connection connection = DBConnectionUtil.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, "FINISHED");
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return;
     }
 }

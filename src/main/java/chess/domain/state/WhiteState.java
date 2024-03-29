@@ -13,10 +13,6 @@ public class WhiteState extends MoveState {
     public GameState move(Board board, Position source, Position target) {
         board.move(source, target, Color.WHITE);
 
-        if (board.isKingDead()) {
-            return END_STATE;
-        }
-
         return BLACK_STATE;
     }
 

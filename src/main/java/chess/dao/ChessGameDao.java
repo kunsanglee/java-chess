@@ -6,7 +6,9 @@ import java.util.Optional;
 
 public interface ChessGameDao {
 
-    void save(ChessGameRequest chessGameRequest);
+    Long save(ChessGameRequest chessGameRequest);
 
     Optional<ChessGameResponse> findRecentPlayableGame();
+
+    void updateGameFinished();
 }

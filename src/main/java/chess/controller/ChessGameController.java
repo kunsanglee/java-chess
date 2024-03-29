@@ -3,6 +3,7 @@ package chess.controller;
 import chess.domain.ChessGame;
 import chess.domain.ChessGameResult;
 import chess.domain.ChessGameService;
+import chess.domain.GameStatus;
 import chess.domain.command.CommandCondition;
 import chess.domain.command.CommandExecutor;
 import chess.domain.command.GameCommand;
@@ -68,12 +69,35 @@ public class ChessGameController {
     private void move(CommandCondition commandCondition) {
         Position source = Position.from(commandCondition.getSource());
         Position target = Position.from(commandCondition.getTarget());
-        chessGame.move(source, target);
+        boolean isKingDead = chessGame.move(source, target);
+        if (isKingDead) {
+            end();
+            chessGameService.updateGameFinished();
+        }
         OutputView.printChessBoard(chessGame.getBoard());
+
     }
 
     private void end() {
-        chessGame.end();
+        List<Move> moveHistory = chessGame.end();
+        saveGameMoves(moveHistory);
+    }
+
+    private void saveGameMoves(List<Move> moveHistory) {
+        GameStatus gameStatus = getGameStatusByKing();
+        Long chessGameId = saveGame(gameStatus);
+        chessGameService.saveMoveHistory(moveHistory, chessGameId);
+    }
+
+    private GameStatus getGameStatusByKing() {
+        if (chessGame.isKingDead()) {
+            return GameStatus.FINISHED;
+        }
+        return GameStatus.PLAYING;
+    }
+
+    private Long saveGame(GameStatus gameStatus) {
+        return chessGameService.save(gameStatus);
     }
 
     private void status() {
