@@ -7,43 +7,42 @@ import chess.domain.command.CommandCondition;
 import chess.domain.command.CommandExecutor;
 import chess.domain.command.GameCommand;
 import chess.domain.position.Position;
+import chess.dto.Move;
 import chess.view.InputView;
 import chess.view.OutputView;
-import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 
 public class ChessGameController {
-    private final Map<GameCommand, CommandExecutor> commands = new EnumMap<>(GameCommand.class);
+    private final Map<GameCommand, CommandExecutor> commands;
     private final ChessGameService chessGameService;
     private final ChessGame chessGame;
 
 
     public ChessGameController(ChessGameService chessGameService, ChessGame chessGame) {
+        this.commands = Map.of(
+                GameCommand.START, args -> start(),
+                GameCommand.MOVE, this::move,
+                GameCommand.END, args -> end(),
+                GameCommand.STATUS, args -> status()
+        );
         this.chessGameService = chessGameService;
         this.chessGame = chessGame;
     }
 
     public void run() {
-        try {
-            registerCommands();
-            playChess();
-        } catch (RuntimeException e) {
-            OutputView.printErrorMessage(e.getMessage());
-        }
-    }
-
-    private void registerCommands() {
-        commands.put(GameCommand.START, args -> start());
-        commands.put(GameCommand.MOVE, this::move);
-        commands.put(GameCommand.END, args -> end());
-        commands.put(GameCommand.STATUS, args -> status());
-    }
-
-    private void playChess() {
         OutputView.printGameStartMessage();
 
         while (chessGame.isPlaying()) {
+            repeatUntilValidCommand();
+        }
+    }
+
+    private void repeatUntilValidCommand() {
+        try {
+            executeCommand();
+        } catch (RuntimeException e) {
+            OutputView.printErrorMessage(e.getMessage());
             repeatUntilValidCommand();
         }
     }
@@ -57,7 +56,13 @@ public class ChessGameController {
 
     private void start() {
         chessGame.start();
+        loadRecentGameIfPresent();
         OutputView.printChessBoard(chessGame.getBoard());
+    }
+
+    private void loadRecentGameIfPresent() {
+        List<Move> moves = chessGameService.getRecentPlayableGameMoves();
+        moves.forEach(move -> chessGame.move(move.source(), move.target()));
     }
 
     private void move(CommandCondition commandCondition) {
@@ -74,14 +79,5 @@ public class ChessGameController {
     private void status() {
         ChessGameResult chessGameResult = chessGame.status();
         OutputView.printChessGameScore(chessGameResult);
-    }
-
-    private void repeatUntilValidCommand() {
-        try {
-            executeCommand();
-        } catch (RuntimeException e) {
-            OutputView.printErrorMessage(e.getMessage());
-            repeatUntilValidCommand();
-        }
     }
 }
