@@ -34,20 +34,24 @@ public class MoveDaoImpl implements MoveDao {
         try (Connection connection = DBConnectionUtil.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setLong(1, id);
-
             ResultSet resultSet = preparedStatement.executeQuery();
-            List<MoveResponse> pieceResponses = new ArrayList<>();
-            while (resultSet.next()) {
-                pieceResponses.add(new MoveResponse(
-                        resultSet.getLong("id"),
-                        resultSet.getString("source"),
-                        resultSet.getString("target"),
-                        resultSet.getLong("chess_game_id")
-                ));
-            }
-            return pieceResponses;
+
+            return getMoveResponses(resultSet);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private List<MoveResponse> getMoveResponses(ResultSet resultSet) throws SQLException {
+        List<MoveResponse> pieceResponses = new ArrayList<>();
+        while (resultSet.next()) {
+            pieceResponses.add(new MoveResponse(
+                    resultSet.getLong("id"),
+                    resultSet.getString("source"),
+                    resultSet.getString("target"),
+                    resultSet.getLong("chess_game_id")
+            ));
+        }
+        return pieceResponses;
     }
 }
