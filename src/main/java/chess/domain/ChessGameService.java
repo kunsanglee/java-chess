@@ -25,7 +25,7 @@ public class ChessGameService {
             return getRecentPlayableGame().get().id();
         }
 
-        ChessGameRequest chessGameRequest = ChessGameRequest.from(gameStatus);
+        ChessGameRequest chessGameRequest = new ChessGameRequest(gameStatus.name());
         return chessGameDao.save(chessGameRequest);
     }
 

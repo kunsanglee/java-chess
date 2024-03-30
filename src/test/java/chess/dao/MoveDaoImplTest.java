@@ -14,11 +14,11 @@ class MoveDaoImplTest {
         Position source = Position.from("a2");
         Position target = Position.from("a4");
 
-        moveDaoImpl.save(MoveRequest.of(source, target, 1L));
+        moveDaoImpl.save(new MoveRequest(source.getValue(), target.getValue(), 1L));
 
         Position source2 = Position.from("b2");
         Position target2 = Position.from("b4");
 
-        moveDaoImpl.save(MoveRequest.of(source2, target2, 1L));
+        moveDaoImpl.save(new MoveRequest(source2.getValue(), target2.getValue(), 1L));
     }
 }

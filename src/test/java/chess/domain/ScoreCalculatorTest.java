@@ -27,6 +27,6 @@ class ScoreCalculatorTest {
 
         assertThat(resultByColor.get(Color.WHITE)).isEqualTo(2);
         assertThat(resultByColor.get(Color.BLACK)).isEqualTo(1);
-        assertThat(chessGameResult.getWinner()).isEqualTo(Color.WHITE);
+        assertThat(chessGameResult.getWinner()).isEqualTo(Color.WHITE.name());
     }
 }

@@ -13,14 +13,14 @@ class ChessGameControllerDaoImplTest {
     @DisplayName("진행중인 체스 게임을 저장할 수 있다.")
     @Test
     void savePlayingChessGame() {
-        ChessGameRequest chessGameRequest = ChessGameRequest.from(GameStatus.PLAYING);
+        ChessGameRequest chessGameRequest = new ChessGameRequest(GameStatus.PLAYING.name());
         chessGameDaoImpl.save(chessGameRequest);
     }
 
     @DisplayName("종료된 체스 게임을 저장할 수 있다.")
     @Test
     void saveFinishedChessGame() {
-        ChessGameRequest chessGameRequest = ChessGameRequest.from(GameStatus.FINISHED);
+        ChessGameRequest chessGameRequest = new ChessGameRequest(GameStatus.FINISHED.name());
         chessGameDaoImpl.save(chessGameRequest);
     }
 
