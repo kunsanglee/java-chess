@@ -74,7 +74,6 @@ public class Board {
     private long calculateKingsCount() {
         return pieces.values().stream()
                 .filter(Piece::isKing)
-                .mapToInt(piece -> 1)
                 .count();
     }
 
