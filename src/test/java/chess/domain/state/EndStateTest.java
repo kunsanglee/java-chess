@@ -13,7 +13,7 @@ class EndStateTest {
     @DisplayName("종료 상태에서 시작하면 에러가 발생한다")
     @Test
     void givenEndStateWhenStartThenThrowsException() {
-        EndState endState = new EndState();
+        EndState endState = EndState.END_STATE;
 
         assertThatCode(endState::start)
                 .isInstanceOf(UnsupportedOperationException.class)
@@ -23,7 +23,7 @@ class EndStateTest {
     @DisplayName("종료 상태에서 움직이면 에러가 발생한다")
     @Test
     void givenEndStateWhenMoveThenThrowsException() {
-        EndState endState = new EndState();
+        EndState endState = EndState.END_STATE;
 
         assertThatCode(
                 () -> endState.move(BoardFactory.createInitialBoard(), Position.from("a1"), Position.from("a2")))
@@ -34,7 +34,7 @@ class EndStateTest {
     @DisplayName("종료 상태에서 종료하면 에러가 발생한다")
     @Test
     void givenEndStateWhenEndThenThrowsException() {
-        EndState endState = new EndState();
+        EndState endState = EndState.END_STATE;
 
         assertThatCode(endState::end)
                 .isInstanceOf(UnsupportedOperationException.class)
@@ -44,7 +44,7 @@ class EndStateTest {
     @DisplayName("종료 상태에서 점수를 계산하면 에러가 발생한다")
     @Test
     void givenEndStateWhenStatusThenThrowsException() {
-        EndState endState = new EndState();
+        EndState endState = EndState.END_STATE;
 
         assertThatCode(endState::status)
                 .isInstanceOf(UnsupportedOperationException.class)
@@ -54,7 +54,7 @@ class EndStateTest {
     @DisplayName("종료 상태에서 플레이중인지 확인하면 false를 반환한다")
     @Test
     void givenEndStateWhenIsPlayingThenReturnFalse() {
-        EndState endState = new EndState();
+        EndState endState = EndState.END_STATE;
 
         assertThat(endState.isPlaying()).isFalse();
     }

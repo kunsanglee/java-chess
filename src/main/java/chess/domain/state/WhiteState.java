@@ -1,12 +1,15 @@
 package chess.domain.state;
 
+import static chess.domain.state.BlackState.BLACK_STATE;
+
 import chess.domain.Board;
 import chess.domain.Color;
 import chess.domain.position.Position;
 
 public class WhiteState extends MoveState {
+    static WhiteState WHITE_STATE = new WhiteState();
 
-    WhiteState() {
+    private WhiteState() {
     }
 
     @Override

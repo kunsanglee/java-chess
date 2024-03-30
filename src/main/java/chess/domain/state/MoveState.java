@@ -1,5 +1,7 @@
 package chess.domain.state;
 
+import static chess.domain.state.EndState.END_STATE;
+
 public abstract class MoveState implements GameState {
 
     protected MoveState() {

@@ -1,10 +1,15 @@
 package chess.domain.state;
 
+import static chess.domain.state.EndState.END_STATE;
+import static chess.domain.state.WhiteState.WHITE_STATE;
+
 import chess.domain.Board;
 import chess.domain.position.Position;
 
 public class ReadyState implements GameState {
-    ReadyState() {
+    public static ReadyState READY_STATE = new ReadyState();
+
+    private ReadyState() {
     }
 
     @Override

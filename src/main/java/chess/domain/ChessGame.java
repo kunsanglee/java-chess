@@ -1,6 +1,7 @@
 package chess.domain;
 
-import static chess.domain.state.GameState.READY_STATE;
+
+import static chess.domain.state.ReadyState.READY_STATE;
 
 import chess.domain.position.Position;
 import chess.domain.state.GameState;

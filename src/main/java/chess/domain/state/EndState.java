@@ -4,7 +4,9 @@ import chess.domain.Board;
 import chess.domain.position.Position;
 
 public class EndState implements GameState {
-    EndState() {
+    static EndState END_STATE = new EndState();
+
+    private EndState() {
     }
 
     @Override
