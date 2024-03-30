@@ -8,10 +8,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Pawn extends Piece {
-    private static final int DEFAULT_WHITE_RANK = 2;
-    private static final int DEFAULT_BLACK_RANK = 7;
     public static final Pawn WHITE_PAWN = new Pawn(Color.WHITE);
     public static final Pawn BLACK_PAWN = new Pawn(Color.BLACK);
+    private static final int DEFAULT_WHITE_RANK = 2;
+    private static final int DEFAULT_BLACK_RANK = 7;
 
     private Pawn(Color color) {
         super(color);

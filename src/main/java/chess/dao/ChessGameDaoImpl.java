@@ -11,7 +11,6 @@ import java.util.Optional;
 
 public class ChessGameDaoImpl implements ChessGameDao {
 
-
     @Override
     public Long save(ChessGameRequest chessGameRequest) {
         String query = "INSERT INTO chess_game (game_status) VALUES (?)";
