@@ -38,9 +38,8 @@ public class ChessGame {
         gameState = gameState.move(board, source, target);
     }
 
-    public List<Move> end() {
+    public void end() {
         gameState = gameState.end();
-        return Collections.unmodifiableList(moveHistory);
     }
 
     public ChessGameResult status() {

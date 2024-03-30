@@ -79,7 +79,8 @@ public class ChessGameController {
     }
 
     private void end() {
-        List<Move> moveHistory = chessGame.end();
+        chessGame.end();
+        List<Move> moveHistory = chessGame.getMoveHistory();
         saveGameMoves(moveHistory);
     }
 
