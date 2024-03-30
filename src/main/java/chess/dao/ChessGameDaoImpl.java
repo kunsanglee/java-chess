@@ -1,6 +1,7 @@
 package chess.dao;
 
 import chess.database.DBConnectionUtil;
+import chess.domain.GameStatus;
 import chess.dto.ChessGameRequest;
 import chess.dto.ChessGameResponse;
 import java.sql.Connection;
@@ -37,7 +38,7 @@ public class ChessGameDaoImpl implements ChessGameDao {
 
         try (Connection connection = DBConnectionUtil.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setString(1, "PLAYING");
+            preparedStatement.setString(1, GameStatus.PLAYING.name());
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
@@ -57,11 +58,10 @@ public class ChessGameDaoImpl implements ChessGameDao {
 
         try (Connection connection = DBConnectionUtil.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setString(1, "FINISHED");
+            preparedStatement.setString(1, GameStatus.FINISHED.name());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return;
     }
 }
