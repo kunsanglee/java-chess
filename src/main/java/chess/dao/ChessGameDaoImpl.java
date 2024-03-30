@@ -21,15 +21,19 @@ public class ChessGameDaoImpl implements ChessGameDao {
                      PreparedStatement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1, chessGameRequest.gameStatus());
             preparedStatement.executeUpdate();
-
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
-            if (resultSet.next()) {
-                return resultSet.getLong(1);
-            }
-            throw new IllegalStateException("게임 저장을 실패했습니다.");
+
+            return getSavedGameId(resultSet);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private long getSavedGameId(ResultSet resultSet) throws SQLException {
+        if (resultSet.next()) {
+            return resultSet.getLong(1);
+        }
+        throw new IllegalStateException("게임 저장을 실패했습니다.");
     }
 
     @Override
@@ -41,13 +45,17 @@ public class ChessGameDaoImpl implements ChessGameDao {
             preparedStatement.setString(1, GameStatus.PLAYING.name());
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            if (resultSet.next()) {
-                long id = resultSet.getLong("id");
-                String status = resultSet.getString("game_status");
-                return Optional.of(new ChessGameResponse(id, status));
-            }
+            return getChessGameResponse(resultSet);
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    private Optional<ChessGameResponse> getChessGameResponse(ResultSet resultSet) throws SQLException {
+        if (resultSet.next()) {
+            long id = resultSet.getLong("id");
+            String status = resultSet.getString("game_status");
+            return Optional.of(new ChessGameResponse(id, status));
         }
         return Optional.empty();
     }
