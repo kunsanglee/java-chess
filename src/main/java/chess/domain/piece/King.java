@@ -18,6 +18,11 @@ public class King extends SingleStepPiece {
     }
 
     @Override
+    public boolean isPawn() {
+        return false;
+    }
+
+    @Override
     public PieceType getPieceType() {
         return PieceType.KING;
     }
@@ -25,5 +30,10 @@ public class King extends SingleStepPiece {
     @Override
     public Set<Direction> getDirections() {
         return Direction.ALL;
+    }
+
+    @Override
+    public double getScore() {
+        return 0;
     }
 }

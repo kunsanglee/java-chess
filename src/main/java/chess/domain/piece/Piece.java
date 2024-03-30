@@ -33,9 +33,13 @@ public abstract class Piece {
 
     public abstract boolean isKing();
 
+    public abstract boolean isPawn();
+
     public abstract PieceType getPieceType();
 
     public abstract Set<Direction> getDirections();
+
+    public abstract double getScore();
 
     public Color getColor() {
         return color;

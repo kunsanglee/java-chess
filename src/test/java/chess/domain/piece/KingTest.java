@@ -57,4 +57,20 @@ class KingTest {
 
         assertThat(king.isKing()).isTrue();
     }
+
+    @DisplayName("킹의 점수를 가져오면 0점을 반환한다")
+    @Test
+    void givenKingWhenGetScoreThenReturn0() {
+        King king = King.WHITE;
+
+        assertThat(king.getScore()).isEqualTo(0);
+    }
+
+    @DisplayName("킹에게 폰인지 물어보면 false를 반환한다")
+    @Test
+    void givenKingWhenIsPawnThenReturnFalse() {
+        King king = King.WHITE;
+
+        assertThat(king.isPawn()).isFalse();
+    }
 }

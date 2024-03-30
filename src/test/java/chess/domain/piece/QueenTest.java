@@ -74,4 +74,20 @@ class QueenTest {
 
         assertThat(queen.isKing()).isFalse();
     }
+
+    @DisplayName("퀸의 점수를 가져오면 9.0점을 반환한다")
+    @Test
+    void givenQueenWhenGetScoreThenReturn9() {
+        Queen queen = Queen.BLACK;
+
+        assertThat(queen.getScore()).isEqualTo(9.0);
+    }
+
+    @DisplayName("퀸에게 폰인지 물어보면 false를 반환한다")
+    @Test
+    void givenQueenWhenIsPawnThenReturnFalse() {
+        Queen queen = Queen.BLACK;
+
+        assertThat(queen.isPawn()).isFalse();
+    }
 }

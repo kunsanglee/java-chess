@@ -61,4 +61,20 @@ class KnightTest {
 
         assertThat(knight.isKing()).isFalse();
     }
+
+    @DisplayName("나이트의 점수를 가져오면 2.5점을 반환한다")
+    @Test
+    void givenKnightWhenGetScoreThenReturn2_5() {
+        Knight knight = Knight.WHITE;
+
+        assertThat(knight.getScore()).isEqualTo(2.5);
+    }
+
+    @DisplayName("나이트에게 폰인지 물어보면 false를 반환한다")
+    @Test
+    void givenKnightWhenIsPawnThenReturnFalse() {
+        Knight knight = Knight.WHITE;
+
+        assertThat(knight.isPawn()).isFalse();
+    }
 }

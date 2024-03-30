@@ -19,7 +19,7 @@ public class ScoreCalculator {
 
     private Map<Position, Piece> collectPiecesByColor(Color color, Map<Position, Piece> pieces) {
         return pieces.entrySet().stream()
-                .filter(entry -> entry.getValue().getColor().isSame(color))
+                .filter(entry -> entry.getValue().isSameColor(color))
                 .collect(Collectors.toMap(Entry::getKey, Entry::getValue));
     }
 
@@ -39,7 +39,7 @@ public class ScoreCalculator {
 
     private double sumDefaultPieceScore(Map<Position, Piece> pieces) {
         return pieces.values().stream()
-                .mapToDouble(piece -> piece.getPieceType().getScore())
+                .mapToDouble(Piece::getScore)
                 .reduce(0, Double::sum);
     }
 
@@ -52,7 +52,7 @@ public class ScoreCalculator {
 
     private static Map<Integer, Long> getPawnCountGroupingBySameFile(Map<Position, Piece> pieces) {
         return pieces.entrySet().stream()
-                .filter(entry -> entry.getValue().getPieceType().isPawn())
+                .filter(entry -> entry.getValue().isPawn())
                 .collect(Collectors.groupingBy(entry -> entry.getKey().getFile(), Collectors.counting()));
     }
 }

@@ -18,6 +18,11 @@ public class Knight extends SingleStepPiece {
     }
 
     @Override
+    public boolean isPawn() {
+        return false;
+    }
+
+    @Override
     public PieceType getPieceType() {
         return PieceType.KNIGHT;
     }
@@ -25,5 +30,10 @@ public class Knight extends SingleStepPiece {
     @Override
     public Set<Direction> getDirections() {
         return Direction.KNIGHT;
+    }
+
+    @Override
+    public double getScore() {
+        return 2.5;
     }
 }

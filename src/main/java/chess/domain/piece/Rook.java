@@ -18,6 +18,11 @@ public class Rook extends MultiStepPiece {
     }
 
     @Override
+    public boolean isPawn() {
+        return false;
+    }
+
+    @Override
     public PieceType getPieceType() {
         return PieceType.ROOK;
     }
@@ -25,5 +30,10 @@ public class Rook extends MultiStepPiece {
     @Override
     public Set<Direction> getDirections() {
         return Direction.STRAIGHT;
+    }
+
+    @Override
+    public double getScore() {
+        return 5.0;
     }
 }

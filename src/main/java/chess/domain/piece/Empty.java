@@ -24,6 +24,11 @@ public class Empty extends Piece {
     }
 
     @Override
+    public boolean isPawn() {
+        return false;
+    }
+
+    @Override
     public PieceType getPieceType() {
         return PieceType.NONE;
     }
@@ -31,5 +36,10 @@ public class Empty extends Piece {
     @Override
     public Set<Direction> getDirections() {
         return Collections.emptySet();
+    }
+
+    @Override
+    public double getScore() {
+        return 0;
     }
 }

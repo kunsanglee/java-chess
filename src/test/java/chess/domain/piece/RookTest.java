@@ -61,4 +61,20 @@ class RookTest {
 
         assertThat(rook.isKing()).isFalse();
     }
+
+    @DisplayName("룩의 점수를 가져오면 5.0점을 반환한다")
+    @Test
+    void givenQueenWhenGetScoreThenReturn5() {
+        Rook rook = Rook.WHITE;
+
+        assertThat(rook.getScore()).isEqualTo(5.0);
+    }
+
+    @DisplayName("룩에게 폰인지 물어보면 false를 반환한다")
+    @Test
+    void givenRookWhenIsPawnThenReturnFalse() {
+        Rook rook = Rook.WHITE;
+
+        assertThat(rook.isPawn()).isFalse();
+    }
 }

@@ -148,4 +148,20 @@ class PawnTest {
 
         assertThat(pawn.isKing()).isFalse();
     }
+
+    @DisplayName("폰의 점수를 가져오면 1.0점을 반환한다")
+    @Test
+    void givenPawnWhenGetScoreThenReturn1() {
+        Pawn pawn = Pawn.BLACK_PAWN;
+
+        assertThat(pawn.getScore()).isEqualTo(1.0);
+    }
+
+    @DisplayName("폰에게 폰인지 물어보면 true를 반환한다")
+    @Test
+    void givenPawnWhenIsPawnThenReturnTrue() {
+        Pawn pawn = Pawn.BLACK_PAWN;
+
+        assertThat(pawn.isPawn()).isTrue();
+    }
 }

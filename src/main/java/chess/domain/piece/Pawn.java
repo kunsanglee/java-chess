@@ -81,6 +81,11 @@ public class Pawn extends Piece {
     }
 
     @Override
+    public boolean isPawn() {
+        return true;
+    }
+
+    @Override
     public PieceType getPieceType() {
         return PieceType.PAWN;
     }
@@ -91,5 +96,10 @@ public class Pawn extends Piece {
             return Direction.WHITE_PAWN;
         }
         return Direction.BLACK_PAWN;
+    }
+
+    @Override
+    public double getScore() {
+        return 1.0;
     }
 }

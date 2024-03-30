@@ -58,4 +58,20 @@ class BishopTest {
 
         assertThat(bishop.isKing()).isFalse();
     }
+
+    @DisplayName("비숍의 점수를 가져오면 3.0점을 반환한다")
+    @Test
+    void givenBishopWhenGetScoreThenReturn3() {
+        Bishop bishop = Bishop.BLACK;
+
+        assertThat(bishop.getScore()).isEqualTo(3.0);
+    }
+
+    @DisplayName("비숍에게 폰인지 물어보면 false를 반환한다")
+    @Test
+    void givenBishopWhenIsPawnThenReturnFalse() {
+        Bishop bishop = Bishop.BLACK;
+
+        assertThat(bishop.isPawn()).isFalse();
+    }
 }

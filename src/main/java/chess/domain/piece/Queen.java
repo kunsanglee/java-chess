@@ -19,6 +19,11 @@ public class Queen extends MultiStepPiece {
     }
 
     @Override
+    public boolean isPawn() {
+        return false;
+    }
+
+    @Override
     public PieceType getPieceType() {
         return PieceType.QUEEN;
     }
@@ -26,5 +31,10 @@ public class Queen extends MultiStepPiece {
     @Override
     public Set<Direction> getDirections() {
         return Direction.ALL;
+    }
+
+    @Override
+    public double getScore() {
+        return 9.0;
     }
 }

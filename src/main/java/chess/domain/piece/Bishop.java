@@ -18,6 +18,11 @@ public class Bishop extends MultiStepPiece {
     }
 
     @Override
+    public boolean isPawn() {
+        return false;
+    }
+
+    @Override
     public PieceType getPieceType() {
         return PieceType.BISHOP;
     }
@@ -25,5 +30,10 @@ public class Bishop extends MultiStepPiece {
     @Override
     public Set<Direction> getDirections() {
         return Direction.DIAGONAL;
+    }
+
+    @Override
+    public double getScore() {
+        return 3.0;
     }
 }
