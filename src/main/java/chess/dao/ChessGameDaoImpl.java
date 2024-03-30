@@ -25,8 +25,7 @@ public class ChessGameDaoImpl implements ChessGameDao {
             if (resultSet.next()) {
                 return resultSet.getLong(1);
             }
-
-            return -1L;
+            throw new IllegalStateException("게임 저장을 실패했습니다.");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
