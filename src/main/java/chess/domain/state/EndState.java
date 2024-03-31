@@ -4,7 +4,7 @@ import chess.domain.Board;
 import chess.domain.position.Position;
 
 public class EndState implements GameState {
-    static EndState END_STATE = new EndState();
+    private static final EndState INSTANCE = new EndState();
 
     private EndState() {
     }
@@ -32,5 +32,9 @@ public class EndState implements GameState {
     @Override
     public boolean isPlaying() {
         return false;
+    }
+
+    public static EndState getInstance() {
+        return EndState.INSTANCE;
     }
 }

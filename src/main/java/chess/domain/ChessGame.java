@@ -1,10 +1,8 @@
 package chess.domain;
 
-
-import static chess.domain.state.ReadyState.READY_STATE;
-
 import chess.domain.position.Position;
 import chess.domain.state.GameState;
+import chess.domain.state.ReadyState;
 import chess.dto.Move;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,7 +16,7 @@ public class ChessGame {
     public ChessGame(Board board) {
         this.moveHistory = new ArrayList<>();
         this.board = board;
-        this.gameState = READY_STATE;
+        this.gameState = ReadyState.getInstance();
     }
 
     public boolean isPlaying() {

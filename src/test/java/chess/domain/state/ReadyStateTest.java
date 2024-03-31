@@ -13,7 +13,7 @@ class ReadyStateTest {
     @DisplayName("준비 상태에서 시작하면 흰색 상태가 된다")
     @Test
     void givenReadyStateWhenStartThenReturnWhiteState() {
-        ReadyState readyState = ReadyState.READY_STATE;
+        ReadyState readyState = ReadyState.getInstance();
 
         assertThat(readyState.start()).isInstanceOf(WhiteState.class);
     }
@@ -21,7 +21,7 @@ class ReadyStateTest {
     @DisplayName("준비 상태일 때 움직이면 에러가 발생한다")
     @Test
     void givenReadyStateWhenMoveThenThrowsException() {
-        ReadyState readyState = ReadyState.READY_STATE;
+        ReadyState readyState = ReadyState.getInstance();
 
         assertThatCode(
                 () -> readyState.move(BoardFactory.createInitialBoard(), Position.from("a2"), Position.from("a3")))
@@ -32,7 +32,7 @@ class ReadyStateTest {
     @DisplayName("준비 상태에서 종료하면 종료 상태가 된다")
     @Test
     void givenReadyStateWhenEndThenReturnEndState() {
-        ReadyState readyState = ReadyState.READY_STATE;
+        ReadyState readyState = ReadyState.getInstance();
 
         assertThat(readyState.end()).isInstanceOf(EndState.class);
     }
@@ -40,7 +40,7 @@ class ReadyStateTest {
     @DisplayName("준비 상태에서 점수를 계산하면 에러가 발생한다")
     @Test
     void givenReadyStateWhenStatusThenThrowsException() {
-        ReadyState readyState = ReadyState.READY_STATE;
+        ReadyState readyState = ReadyState.getInstance();
 
         assertThatCode(readyState::status)
                 .isInstanceOf(UnsupportedOperationException.class)
@@ -50,7 +50,7 @@ class ReadyStateTest {
     @DisplayName("준비 상태에서 실행중인지 확인하면 true를 반환한다")
     @Test
     void givenReadyStateWhenIsPlayingThenReturnTrue() {
-        ReadyState readyState = ReadyState.READY_STATE;
+        ReadyState readyState = ReadyState.getInstance();
 
         assertThat(readyState.isPlaying()).isTrue();
     }

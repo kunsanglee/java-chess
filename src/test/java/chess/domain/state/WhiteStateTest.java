@@ -13,7 +13,7 @@ class WhiteStateTest {
     @DisplayName("백의 상태일 때 시작하면 에러가 발생한다")
     @Test
     void givenWhiteStateWhenStartThenThrowsException() {
-        BlackState blackState = BlackState.BLACK_STATE;
+        BlackState blackState = BlackState.getInstance();
 
         assertThatCode(blackState::start)
                 .isInstanceOf(UnsupportedOperationException.class)
@@ -23,7 +23,7 @@ class WhiteStateTest {
     @DisplayName("백의 상태일 때 움직이면 흑의 상태가 된다")
     @Test
     void givenWhiteStateWhenMoveThenReturnBlackState() {
-        WhiteState WhiteState = chess.domain.state.WhiteState.WHITE_STATE;
+        WhiteState WhiteState = chess.domain.state.WhiteState.getInstance();
 
         GameState state = WhiteState.move(BoardFactory.createInitialBoard(), Position.from("a2"), Position.from("a3"));
 
@@ -33,7 +33,7 @@ class WhiteStateTest {
     @DisplayName("백의 상태일 때 종료하면 종료 상태가 된다")
     @Test
     void givenWhiteStateWhenEndThenReturnEndState() {
-        WhiteState WhiteState = chess.domain.state.WhiteState.WHITE_STATE;
+        WhiteState WhiteState = chess.domain.state.WhiteState.getInstance();
 
         assertThat(WhiteState.end()).isInstanceOf(EndState.class);
     }
@@ -41,7 +41,7 @@ class WhiteStateTest {
     @DisplayName("백의 상태일 때 점수를 계산하면 백의 상태가 유지된다")
     @Test
     void givenWhiteStateWhenStatusThenReturnWhiteState() {
-        WhiteState WhiteState = chess.domain.state.WhiteState.WHITE_STATE;
+        WhiteState WhiteState = chess.domain.state.WhiteState.getInstance();
 
         assertThat(WhiteState.status()).isInstanceOf(WhiteState.class);
     }
@@ -49,7 +49,7 @@ class WhiteStateTest {
     @DisplayName("백의 상태일 때 플레이중인지 확인하면 true를 반환한다")
     @Test
     void givenWhiteStateWhenIsPlayingThenReturnTrue() {
-        WhiteState whiteState = chess.domain.state.WhiteState.WHITE_STATE;
+        WhiteState whiteState = chess.domain.state.WhiteState.getInstance();
 
         assertThat(whiteState.isPlaying()).isTrue();
     }

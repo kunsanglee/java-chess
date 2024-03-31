@@ -1,6 +1,5 @@
 package chess.domain.state;
 
-import static chess.domain.state.EndState.END_STATE;
 
 public abstract class MoveState implements GameState {
 
@@ -14,7 +13,7 @@ public abstract class MoveState implements GameState {
 
     @Override
     public GameState end() {
-        return END_STATE;
+        return EndState.getInstance();
     }
 
     @Override

@@ -1,13 +1,11 @@
 package chess.domain.state;
 
-import static chess.domain.state.BlackState.BLACK_STATE;
-
 import chess.domain.Board;
 import chess.domain.Color;
 import chess.domain.position.Position;
 
 public class WhiteState extends MoveState {
-    static WhiteState WHITE_STATE = new WhiteState();
+    private static final WhiteState INSTANCE = new WhiteState();
 
     private WhiteState() {
     }
@@ -16,11 +14,15 @@ public class WhiteState extends MoveState {
     public GameState move(Board board, Position source, Position target) {
         board.move(source, target, Color.WHITE);
 
-        return BLACK_STATE;
+        return BlackState.getInstance();
     }
 
     @Override
     public GameState status() {
         return this;
+    }
+
+    public static WhiteState getInstance() {
+        return WhiteState.INSTANCE;
     }
 }
