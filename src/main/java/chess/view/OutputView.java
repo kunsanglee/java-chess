@@ -61,11 +61,11 @@ public class OutputView {
         Map<Color, Double> result = chessGameResult.getResult();
 
         result.forEach((key, value) -> System.out.printf("%s : %.1f점%s", key.name(), value, NEW_LINE));
-        String winner = chessGameResult.getWinner();
 
-        if (chessGameResult.isDraw()) {
+        Color winnerColor = chessGameResult.getWinner();
+        if (winnerColor.isSame(Color.NONE)) {
             return;
         }
-        System.out.printf("%s 승리%s", winner, NEW_LINE);
+        System.out.printf("%s 승리%s", winnerColor.name(), NEW_LINE);
     }
 }

@@ -17,20 +17,16 @@ public class ChessGameResult {
         return result;
     }
 
-    public String getWinner() {
+    public Color getWinner() {
         double whiteScore = result.get(Color.WHITE);
         double blackScore = result.get(Color.BLACK);
 
         if (whiteScore == blackScore) {
-            return Color.NONE.name();
+            return Color.NONE;
         }
         if (whiteScore > blackScore) {
-            return Color.WHITE.name();
+            return Color.WHITE;
         }
-        return Color.BLACK.name();
-    }
-
-    public boolean isDraw() {
-        return getWinner().equals(Color.NONE.name());
+        return Color.BLACK;
     }
 }
