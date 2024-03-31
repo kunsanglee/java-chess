@@ -29,10 +29,9 @@ public class ChessGame {
         gameState = gameState.start();
     }
 
-    public boolean move(Position source, Position target) {
+    public void move(Position source, Position target) {
         gameState = gameState.move(board, source, target);
         moveHistory.add(new Move(source, target));
-        return board.isKingDead();
     }
 
     public void moveForHistory(Position source, Position target) {
@@ -46,6 +45,10 @@ public class ChessGame {
     public ChessGameResult status() {
         gameState = gameState.status();
         return board.calculateGameScore();
+    }
+
+    public boolean isKingDead() {
+        return board.isKingDead();
     }
 
     public Board getBoard() {

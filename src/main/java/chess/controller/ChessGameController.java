@@ -69,8 +69,8 @@ public class ChessGameController {
     private void move(CommandCondition commandCondition) {
         Position source = Position.from(commandCondition.getSource());
         Position target = Position.from(commandCondition.getTarget());
-        boolean isKingDead = chessGame.move(source, target);
-        if (isKingDead) {
+        chessGame.move(source, target);
+        if (chessGame.isKingDead()) {
             end();
             chessGameService.updateGameFinished();
         }
