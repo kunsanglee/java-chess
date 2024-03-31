@@ -48,15 +48,18 @@ public class ChessGame {
         return board.calculateGameScore();
     }
 
-    public boolean isKingDead() {
-        return board.isKingDead();
-    }
-
     public Board getBoard() {
         return board;
     }
 
     public List<Move> getMoveHistory() {
         return Collections.unmodifiableList(moveHistory);
+    }
+
+    public GameStatus getGameStatusByKing() {
+        if (board.isKingDead()) {
+            return GameStatus.FINISHED;
+        }
+        return GameStatus.PLAYING;
     }
 }

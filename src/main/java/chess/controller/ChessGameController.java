@@ -85,16 +85,9 @@ public class ChessGameController {
     }
 
     private void saveGameMoves(List<Move> moveHistory) {
-        GameStatus gameStatus = getGameStatusByKing();
+        GameStatus gameStatus = chessGame.getGameStatusByKing();
         Long chessGameId = saveGame(gameStatus);
         chessGameService.saveMoveHistory(moveHistory, chessGameId);
-    }
-
-    private GameStatus getGameStatusByKing() {
-        if (chessGame.isKingDead()) {
-            return GameStatus.FINISHED;
-        }
-        return GameStatus.PLAYING;
     }
 
     private Long saveGame(GameStatus gameStatus) {
